@@ -53,6 +53,7 @@ Launch such commands:
 ```console
 $ sudo apt install make git # if not yet installed
 $ git clone https://github.com/vald-phoenix/gitea.git
+$ cd gitea
 ```
 
 If not on Ubuntu then see these links:
