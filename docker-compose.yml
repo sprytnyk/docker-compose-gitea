@@ -1,0 +1,82 @@
+version: "3.7"
+
+
+services:
+  server:
+    image: gitea/gitea:1
+    environment:
+      # Permissions envs
+      - USER_UID=1001
+      - USER_GID=1001
+      # DB envs
+      - DB_TYPE=postgres
+      - DB_HOST=db:5432
+      - DB_NAME=${POSTGRES_DB}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWD=${POSTGRES_PASSWORD}
+      # Gitea specific envs
+      - DOMAIN=${DNS_NAME}
+      - SSH_DOMAIN=${DNS_NAME}
+      - ROOT_URL=https://${DNS_NAME}
+      - DISABLE_REGISTRATION=true
+      - INSTALL_LOCK=true
+      - REQUIRE_SIGNIN_VIEW=true
+      - SECRET_KEY=${SECRET_KEY}
+      - RUN_MODE=prod
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - /var/lib/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "127.0.0.1:2222:22"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12.3
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - gitea
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  letsencrypt:
+    image: linuxserver/letsencrypt
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+      - VALIDATION=http
+      # set your domain name and email here
+      - EMAIL=${EMAIL}
+      - URL=${DNS_NAME}
+    networks:
+      - gitea
+    volumes:
+      - "letsencrypt:/config"
+      - "./conf/nginx.conf:/config/nginx/site-confs/default"
+    ports:
+      - "443:443"
+      - "80:80"
+    depends_on:
+      - server
+    restart: always
+
+networks:
+  gitea:
+    external: false
+
+volumes:
+  postgres:
+    driver: local
+  letsencrypt:
+    driver: local
