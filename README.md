@@ -53,7 +53,6 @@ Launch such commands:
 ```console
 $ sudo apt install make git # if not yet installed
 $ git clone https://github.com/vald-phoenix/gitea.git
-$ cd gitea
 ```
 
 If not on Ubuntu then see these links:
@@ -71,11 +70,14 @@ $ sudo sh -c 'cat > /etc/docker/daemon.json <<EOF
 EOF'
 ```
 
-To finish the installation: 
+To finish the installation don't forget to set environment variables
+and after `make install` log out SSH and log in back to have the ability
+use `docker` command without `sudo`.
 
 ```console
 $ make docker # only on Ubuntu
 $ make install # other distros
+$ cd gitea
 $ make b
 ```
 
