@@ -51,8 +51,8 @@ For more customisation of environment variables see official docs for:
 Launch such commands:
 
 ```console
+$ sudo apt install make git # if not yet installed
 $ git clone https://github.com/vald-phoenix/gitea.git
-$ sudo apt install make # if not yet installed
 ```
 
 If not on Ubuntu then see these links:
