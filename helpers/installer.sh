@@ -2,7 +2,7 @@
 
 # SSH Container Passthrough
 sudo mkdir -p /app/gitea
-sudo cp helpers/gitea /app/gitea/gitea
+sudo cp helpers/cp/gitea /app/gitea/gitea
 
 # Create git user, make its an owner of /var/lib/gitea, and log in
 sudo adduser --gecos ""  --disabled-password --home /var/lib/gitea/git git

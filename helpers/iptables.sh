@@ -15,15 +15,7 @@ sudo sed -i -e 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/
 # Create a startup script to update iptables by means of cron job because they
 # will be reset on reboot
 mkdir -p "${HOME}/.scripts"
-cat >> "${HOME}/.scripts/startup.sh" <<EOF
-#/usr/bin/env sh
-# Update iptables rules with a bridge IP to be able to reach the world from
-# Docker containers
-sleep 5 # bodge to get bridge IP address because Docker takes some time to start up
-BRIDGE_IP="$(ip ro | grep br- | awk '{print $1}')"
-/sbin/iptables -t nat -A POSTROUTING ! -o docker0 -s "${BRIDGE_IP}" -j MASQUERADE
-EOF
-chmod +x "${HOME}/.scripts/startup.sh"
+cp helpers/cp/startup "${HOME}/.scripts/startup.sh"
 
 # Add cron job for root user because we don't want to enter password for this :)
 sudo -u root sh -c '(crontab -l 2>/dev/null; echo "@reboot /bin/sh ${HOME}/.scripts/startup.sh") | crontab -'
