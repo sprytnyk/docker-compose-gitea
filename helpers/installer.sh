@@ -10,7 +10,7 @@ sudo chown git:git /var/lib/gitea
 
 USER_PASSWORD="$(pwgen -s 20 -y)"
 echo -e "git user password is \e[34m\"${USER_PASSWORD}\"\e[0m. \e[91mDON'T FORGET TO SAVE IT!\e[0m"
-sudo -u git usermod --password "$(openssl passwd -1 "${USER_PASSWORD}")" "${USER_NAME}"
+sudo -u git usermod --password "$(openssl passwd -1 "${USER_PASSWORD}")" git
 
 # Create SSH key pair for git user
 sduo -u git ssh-keygen -t rsa -b 4096 -C "Gitea Host Key" -N '' -f "${HOME}/.ssh/id_rsa"
