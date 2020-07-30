@@ -18,11 +18,17 @@ es:
 install:
 	@helpers/installer.sh
 
+iptables: ri
+	@helpers/iptables.sh
+
 ps:
 	@docker-compose ps
 
 restart: down up
 	@echo "Restarting finished."
+
+ri:
+	@helpers/ri.sh
 
 up:
 	@docker-compose up -d
