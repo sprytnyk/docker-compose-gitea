@@ -9,7 +9,7 @@ sudo adduser --gecos ""  --disabled-password --home /var/lib/gitea/git git
 sudo chown git:git /var/lib/gitea
 
 USER_PASSWORD="$(pwgen -s 20 -y)"
-echo -e "Your password is \e[34m\"${USER_PASSWORD}\"\e[0m. \e[91mDON'T FORGET TO SAVE IT!\e[0m"
+echo -e "git user password is \e[34m\"${USER_PASSWORD}\"\e[0m. \e[91mDON'T FORGET TO SAVE IT!\e[0m"
 sudo -u git usermod --password "$(openssl passwd -1 "${USER_PASSWORD}")" "${USER_NAME}"
 
 # Create SSH key pair for git user
