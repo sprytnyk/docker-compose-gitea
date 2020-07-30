@@ -18,7 +18,7 @@ es:
 install:
 	@helpers/installer.sh
 
-iptables: ri
+iptables:
 	@helpers/iptables.sh
 
 ps:

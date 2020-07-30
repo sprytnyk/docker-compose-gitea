@@ -9,11 +9,11 @@ sudo adduser --gecos ""  --disabled-password --home /var/lib/gitea/git git
 sudo chown git:git /var/lib/gitea
 
 USER_PASSWORD="$(pwgen -s 20 -y)"
-echo -e "git user password is \e[34m\"${USER_PASSWORD}\"\e[0m. \e[91mDON'T FORGET TO SAVE IT!\e[0m"
-sudo -u git usermod --password "$(openssl passwd -1 "${USER_PASSWORD}")" git
+echo "git user password is \e[34m\"${USER_PASSWORD}\"\e[0m. \e[91mDON'T FORGET TO SAVE IT!\e[0m"
+sudo usermod --password "$(openssl passwd -1 "${USER_PASSWORD}")" git
 
 # Create SSH key pair for git user
-sduo -u git ssh-keygen -t rsa -b 4096 -C "Gitea Host Key" -N '' -f "${HOME}/.ssh/id_rsa"
+sudo -u git ssh-keygen -t rsa -b 4096 -C "Gitea Host Key" -N '' -f "/var/lib/gitea/git/.ssh/id_rsa"
 
 # Add host pub key to authorized_keys that will be shared between
 # server container and the host git user

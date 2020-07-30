@@ -3,8 +3,8 @@
 ## Description
 
 This repository assumes you have created a user that in `sudo` group, have 
-DNS records configured for a VPS instance and using 
-Ubuntu 18.04 but should work with other distributives as well besides
+DNS records configured for a VPS instance, VPS will have one Docker bridge
+and using Ubuntu 18.04 but should work with other distributives as well besides
 `make docker` target. That target specifically for Ubuntu versions. You can
 make use of this dummy script to bootstrap a user if still under `root` one:
 [bootstrap.sh](https://gist.github.com/vald-phoenix/6db4bf3252be5dbd033b5f9346c52a29)
@@ -75,8 +75,10 @@ use `docker` command without `sudo`.
 ```console
 $ make iptables # if you want to have ufw complaint Docker and if not yet invoked
 $ make install # bootstrap required things for Gitea
+# log out - log in
 $ cd gitea
 $ make b # build docker images and run it in a background
+$ make ri # update iptables with bridge ip
 ```
 
 After this, you will be able to navigate your DNS address and see
