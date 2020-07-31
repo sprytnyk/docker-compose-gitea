@@ -59,6 +59,7 @@ services:
       # set your domain name and email here
       - EMAIL=${EMAIL}
       - URL=${DNS_NAME}
+      - STAGING=${STAGING:-true}
     networks:
       - gitea
     volumes:
