@@ -15,10 +15,10 @@ sudo sed -i -e 's/DEFAULT_FORWARD_POLICY="DROP"/DEFAULT_FORWARD_POLICY="ACCEPT"/
 # Create a startup script to update iptables by means of cron job because they
 # will be reset on reboot
 mkdir -p "${HOME}/.scripts"
-cp helpers/cp/startup "${HOME}/.scripts/startup.sh"
+cp helpers/cp/startup "${HOME}/.scripts/startup"
 
 # Add cron job for root user because we don't want to enter password for this :)
-sudo -u root sh -c '(crontab -l 2>/dev/null; echo "@reboot /bin/sh ${HOME}/.scripts/startup.sh") | crontab -'
+sudo -u root sh -c '(crontab -l 2>/dev/null; echo "@reboot /bin/sh ${HOME}/.scripts/startup") | crontab -'
 
 # Restart docker and ufw services
 sudo systemctl restart ufw docker

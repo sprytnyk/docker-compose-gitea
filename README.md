@@ -158,14 +158,8 @@ One more crucial thing, if you need to stop all containers i.e.
 with `make ri`. Docker bridge IP changes on occasion, so you want to
 be sure that containers can communicate with the world.
 
-When expiry of a certificate date is approaching then invoke the following
-commands (ufw only):
+To renew certs automatically add this cron job:
 
 ```console
-$ make uniptables
-$ make down
-$ export STAGING=false
-$ make b
-$ make iptables
-$ make ri
+$ make cron
 ```

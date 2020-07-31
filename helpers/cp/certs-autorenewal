@@ -1,0 +1,8 @@
+#!usr/bin/env sh
+# Cron job to check certs every day
+cd ${PROJECT_PATH:-$HOME/gitea}
+/usr/bin/make uniptables
+/usr/bin/make down
+/usr/bin/make b
+/usr/bin/make iptables
+/usr/bin/make ri

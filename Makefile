@@ -1,7 +1,10 @@
-.PHONY: b dark docker down es install ps restart uniptables up update
+.PHONY: b cron dark docker down es install ps restart uniptables up update
 
 b:
 	@docker-compose up --build -d
+
+cron:
+	@helpers/cron.sh
 
 dark:
 	@helpers/dark.sh
