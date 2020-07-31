@@ -164,6 +164,7 @@ commands (ufw only):
 ```console
 $ make uniptables
 $ make down
+$ export STAGING=false
 $ make b
 $ make iptables
 $ make ri
