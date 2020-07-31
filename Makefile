@@ -1,4 +1,4 @@
-.PHONY: b dark docker down es install ps restart up update
+.PHONY: b dark docker down es install ps restart uniptables up update
 
 b:
 	@docker-compose up --build -d
@@ -29,6 +29,9 @@ restart: down up
 
 ri:
 	@helpers/ri.sh
+
+uniptables:
+	@helpers/uniptables.sh
 
 up:
 	@docker-compose up -d
