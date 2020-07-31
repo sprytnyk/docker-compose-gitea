@@ -57,8 +57,8 @@ Launch such commands:
 ```console
 $ sudo apt install make git pwgen # if not yet installed
 $ git clone https://github.com/vald-phoenix/gitea.git
-$ make docker # Ubuntu only
 $ cd gitea
+$ make docker # Ubuntu only
 ```
 
 If not on Ubuntu then instead of `make docker` use these links:
