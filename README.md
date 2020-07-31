@@ -3,9 +3,11 @@
 ## Description
 
 This repository assumes you have created a user that in `sudo` group, have 
-DNS records configured for a VPS instance, VPS will have one Docker bridge
-and using Ubuntu 18.04 but should work with other distributives as well besides
-`make docker` target. That target specifically for Ubuntu versions. You can
+DNS records configured for a VPS instance, VPS will have one Docker bridge if
+you're going to use ufw with Docker (IMO it's simpler to use 
+[binary setup](https://docs.gitea.io/en-us/install-from-binary/) than Dockerised
+solution) and using Ubuntu 18.04 but should work with other distributives as well
+besides `make docker` target. That target specifically for Ubuntu versions. You can
 make use of this dummy script to bootstrap a user if still under `root` one:
 [bootstrap.sh](https://gist.github.com/vald-phoenix/6db4bf3252be5dbd033b5f9346c52a29)
 
