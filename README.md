@@ -1,5 +1,7 @@
 # Docker Compose for Gitea with Letsencrypt
 
+![Rating](media/rating.png)
+
 ## Description
 
 This repository assumes you have created a user that in `sudo` group, have 
