@@ -48,7 +48,7 @@ services:
       - postgres:/var/lib/postgresql/data
 
   letsencrypt:
-    image: linuxserver/letsencrypt
+    image: linuxserver/swag
     cap_add:
       - NET_ADMIN
     environment:
