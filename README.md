@@ -58,7 +58,7 @@ Launch such commands:
 
 ```console
 $ sudo apt install make git pwgen # if not yet installed
-$ git clone https://github.com/britonad/gitea.git
+$ git clone https://github.com/britonad/docker-compose-gitea.git
 $ cd gitea
 $ make docker # Ubuntu only
 ```
