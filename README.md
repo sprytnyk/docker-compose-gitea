@@ -11,7 +11,7 @@ you're going to use ufw with Docker (IMO it's simpler to use
 solution) and using Ubuntu distro but should work with other distributives as well
 besides `make docker` target. That target specifically for Ubuntu versions. You can
 make use of this dummy script to bootstrap a user if still under `root` one:
-[bootstrap.sh](https://gist.github.com/britonad/0c7f0bb04d94a7873c740c00bea87893)
+[bootstrap.sh](https://gist.github.com/sprytnyk/0c7f0bb04d94a7873c740c00bea87893)
 
 It's important to have proper UID and GID values for `server` and `lestencrypt`
 containers. Default values the following:
@@ -58,7 +58,7 @@ Launch such commands:
 
 ```console
 $ sudo apt install make git pwgen # if not yet installed
-$ git clone https://github.com/britonad/docker-compose-gitea.git
+$ git clone https://github.com/sprytnyk/docker-compose-gitea.git
 $ cd gitea
 $ make docker # Ubuntu only
 ```
